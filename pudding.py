@@ -24,10 +24,13 @@ class puddingbrumsel:
       return "*brums*"
 
   def tweet(self):
-    tweet = self.pudding()
+    if random.randint(0, 3) == 0:
+      tweet = self.neupudding()
+    else:
+      tweet = self.pudding()
 
     if len(tweet) < 120:
-      self.brumms() tweet
+      tweet += self.brumms() 
 
     return tweet
 
