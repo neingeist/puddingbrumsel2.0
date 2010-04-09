@@ -1,4 +1,5 @@
 #!/usr/bin/env python
+# vim: set fileencoding=utf-8:
 from pysqlite2 import dbapi2 as sqlite
 import urllib
 import urllib2
@@ -29,7 +30,8 @@ class google_sets_fnord:
     for r in soup.html.body.findAll("font", size=-1, face="Arial, sans-serif"):
       word = r.a.contents[0]
       if re.compile("^http://www.google.com/search\?hl=en&q=").match(r.a["href"]):
-        self.newwords.append(word)
+        if re.compile("^[a-zäöüß]+$").match(word):
+          self.newwords.append(word)
 
   def get_random_new_words(self):
     self.get_new_words(self.words[random.randint(0, len(self.words)-1)], 
@@ -38,7 +40,7 @@ class google_sets_fnord:
   def store(self):
     for newword in self.newwords:
       print newword
-      self.cursor.execute("INSERT INTO words (word) VALUES(?)", (newword,));
+      self.cursor.execute("INSERT OR IGNORE INTO words (word) VALUES(?)", (newword,));
     self.connection.commit()
     
 
