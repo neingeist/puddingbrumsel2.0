@@ -2,11 +2,12 @@
 # vim: set fileencoding=utf-8:
 import random
 from pysqlite2 import dbapi2 as sqlite
+from pudding_google_sets import pudding_google_sets
 
 class puddingbrumsel:
 
-  def __init__(self, words):
-    self.words = words
+  def __init__(self, pgs):
+    self.pgs = pgs
 
   def pick(self, list):
     return list[random.randint(0, len(list)-1)]
@@ -19,7 +20,7 @@ class puddingbrumsel:
     ])
 
   def neupudding(self):
-    return self.pick(self.words) + "pudding"
+    return pgs.get_random_word() + "pudding"
 
   def brums(self):
     return self.pick([
@@ -70,10 +71,7 @@ class puddingbrumsel:
 
 
 if __name__ == "__main__":
-  sqlite_file = "pudding-google-sets.sqlite"
-  cursor = sqlite.connect(sqlite_file).cursor()
-  cursor.execute("SELECT word FROM words")
-  words = map(lambda r: r[0], cursor.fetchall())
-
-  p = puddingbrumsel(words)
+  sqlite_file = "pudding_google_sets.sqlite"
+  pgs = pudding_google_sets(sqlite_file)
+  p = puddingbrumsel(pgs)
   print p.tweet()

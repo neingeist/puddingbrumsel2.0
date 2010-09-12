@@ -14,12 +14,16 @@ class pudding_google_sets:
     self.words = map(lambda r: r[0], self.cursor.fetchall())
     self.newwords = []
 
+  def get_random_word(self):
+    return self.words[random.randint(0, len(self.words)-1)]
+
   def get_random_new_words(self):
     gs = google_sets()
 
     self.newwords += gs.get_new_words(
-      self.words[random.randint(0, len(self.words)-1)], 
-      self.words[random.randint(0, len(self.words)-1)])
+      self.get_random_word(),
+      self.get_random_word()
+    )
 
   def store(self):
     for newword in self.newwords:
@@ -28,7 +32,7 @@ class pudding_google_sets:
     self.connection.commit()
     
 if __name__ == "__main__":
-  g = pudding_google_sets("pudding-google-sets.sqlite")
+  g = pudding_google_sets("pudding_google_sets.sqlite")
   g.get_random_new_words(); 
   print g.newwords
   #g.store()
