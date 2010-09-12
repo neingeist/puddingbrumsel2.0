@@ -5,12 +5,8 @@ from pysqlite2 import dbapi2 as sqlite
 
 class puddingbrumsel:
 
-  def __init__(self, sqlite_file):
-    self.connection = sqlite.connect(sqlite_file)
-    self.cursor = self.connection.cursor()
-
-    self.cursor.execute("SELECT word FROM words");
-    self.words = map(lambda r: r[0], self.cursor.fetchall())
+  def __init__(self, words):
+    self.words = words
 
   def pick(self, list):
     return list[random.randint(0, len(list)-1)]
@@ -73,5 +69,11 @@ class puddingbrumsel:
     ])
 
 
-p = puddingbrumsel("pudding-google-sets.sqlite")
+sqlite_file = "pudding-google-sets.sqlite"
+connection = sqlite.connect(sqlite_file)
+cursor = self.connection.cursor()
+cursor.execute("SELECT word FROM words");
+words = map(lambda r: r[0], self.cursor.fetchall())
+
+p = puddingbrumsel(words)
 print p.tweet()
