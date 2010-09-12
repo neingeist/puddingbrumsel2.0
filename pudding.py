@@ -71,7 +71,6 @@ class puddingbrumsel:
       "hihi. " + self.pudding() + " " + self.brums() +  " " + self.emoticon(),
       "kein " + self.pudding() + " " + self.sademoticon()
     ])
-    return tweet
 
 
 p = puddingbrumsel("pudding-google-sets.sqlite")
