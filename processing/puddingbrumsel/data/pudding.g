@@ -4,13 +4,13 @@
   <pudding> <doubleemoticon> |
   <pudding> <brums> |
   <pudding> <brums> <emoticon> |
-  freu mich auf <pudding> <brums> <emoticon>
+  freu mich auf <pudding> <brums> <emoticon> |
+  kein <pudding> <sademoticon>
 }
 
 {
   <pudding> 
-  pudding |
-  pudding |
+  [2] pudding |
   <neupudding>
 }
 
@@ -336,4 +336,11 @@
   <brums>
   *brums* | 
   *brumms* 
+}
+
+{
+  <sademoticon>
+  :(( | 
+  :-( |
+  :/
 }
