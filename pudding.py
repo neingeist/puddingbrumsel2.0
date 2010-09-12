@@ -1,4 +1,5 @@
 #!/usr/bin/env python
+# vim: set fileencoding=utf-8:
 import random
 from pysqlite2 import dbapi2 as sqlite
 
@@ -51,12 +52,22 @@ class puddingbrumsel:
       ":/"
     ])
 
+  def adj(self):
+    return self.pick([
+      u"köstlicher",
+      "knuspriger", 
+      "knackiger",
+      "lecker",
+      u"süßer",
+    ])
+
   def tweet(self):
     return self.pick([
       "<3 " + self.pudding() + " " + self.emoticon(),
       self.pudding() + " " + self.doubleemoticon(),
       self.pudding() + " " + self.brums(), 
       self.pudding() + " " + self.brums() + " " + self.emoticon(),
+      self.adj() + " " + self.pudding() + " " + self.brums() + " " + self.emoticon(),
       "hihi. " + self.pudding() + " " + self.brums() +  " " + self.emoticon(),
       "kein " + self.pudding() + " " + self.sademoticon()
     ])
