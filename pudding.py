@@ -69,11 +69,11 @@ class puddingbrumsel:
     ])
 
 
-sqlite_file = "pudding-google-sets.sqlite"
-connection = sqlite.connect(sqlite_file)
-cursor = self.connection.cursor()
-cursor.execute("SELECT word FROM words");
-words = map(lambda r: r[0], self.cursor.fetchall())
+if __name__ == "__main__":
+  sqlite_file = "pudding-google-sets.sqlite"
+  cursor = sqlite.connect(sqlite_file).cursor()
+  cursor.execute("SELECT word FROM words")
+  words = map(lambda r: r[0], cursor.fetchall())
 
-p = puddingbrumsel(words)
-print p.tweet()
+  p = puddingbrumsel(words)
+  print p.tweet()
