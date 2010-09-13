@@ -1,7 +1,6 @@
 #!/usr/bin/env python
 # vim: set fileencoding=utf-8:
 import random
-from pysqlite2 import dbapi2 as sqlite
 from pudding_google_sets import pudding_google_sets
 
 class puddingbrumsel:
