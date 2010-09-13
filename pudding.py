@@ -63,10 +63,13 @@ class puddingbrumsel:
       "<3 " + self.pudding() + " " + self.emoticon(),
       self.pudding() + " " + self.doubleemoticon(),
       self.pudding() + " " + self.brums(), 
+      "mag " + self.pudding() + " " + self.emoticon(),
       self.pudding() + " " + self.brums() + " " + self.emoticon(),
       self.adj() + " " + self.pudding() + " " + self.brums() + " " + self.emoticon(),
       "hihi. " + self.pudding() + " " + self.brums() +  " " + self.emoticon(),
-      "kein " + self.pudding() + " " + self.sademoticon()
+      "kein " + self.pudding() + " " + self.sademoticon(),
+      self.pudding() + " alle. " + self.sademoticon(),
+      "wo " + self.brums() + " isser? der " + self.pudding() + "?",
     ])
 
 
