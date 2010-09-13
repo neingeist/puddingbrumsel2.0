@@ -19,7 +19,7 @@ class puddingbrumsel:
     ])
 
   def neupudding(self):
-    return pgs.get_random_word() + "pudding"
+    return self.pgs.get_random_word() + "pudding"
 
   def brums(self):
     return self.pick([
