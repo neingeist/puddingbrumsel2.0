@@ -1,0 +1,3 @@
+[submodule "libs/python-oauth2"]
+	path = libs/python-oauth2
+	url = http://github.com/brosner/python-oauth2.git
