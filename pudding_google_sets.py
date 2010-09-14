@@ -3,6 +3,7 @@
 from pysqlite2 import dbapi2 as sqlite
 import random
 from google_sets import google_sets
+import enchant
 
 class pudding_google_sets:
 
@@ -26,13 +27,15 @@ class pudding_google_sets:
     )
 
   def store(self):
+    d = enchant.Dict("de_DE")
     for newword in self.newwords:
-      print newword
-      self.cursor.execute("INSERT OR IGNORE INTO words (word) VALUES(?)", (newword,));
+      if d.check(newword.capitalize()):
+        print newword
+        self.cursor.execute("INSERT OR IGNORE INTO words (word) VALUES(?)", (newword,));
     self.connection.commit()
     
 if __name__ == "__main__":
   g = pudding_google_sets("pudding_google_sets.sqlite")
   g.get_random_new_words(); 
   print g.newwords
-  #g.store()
+  g.store()
