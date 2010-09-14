@@ -14,11 +14,8 @@ def get_random_word():
   return wordset[random.randint(0,len(wordset)-1)]
 
 def get_new_words(w1, w2):
-  return filter(
-    lambda w: d.check(w.capitalize()),
-    gs.get_new_words(w1, w2)
-  )
-  
+  return gs.get_new_words(w1, w2, lambda w: d.check(w.capitalize()))
+
 if __name__ == "__main__":
   while True:
     for word in get_new_words(get_random_word(), get_random_word()):
