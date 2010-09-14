@@ -11,12 +11,13 @@ class pudding_google_sets:
     self.connection = sqlite.connect(sqlite_file)
     self.cursor = self.connection.cursor()
 
-    self.cursor.execute("SELECT word FROM words");
-    self.words = map(lambda r: r[0], self.cursor.fetchall())
     self.newwords = []
 
   def get_random_word(self):
-    return self.words[random.randint(0, len(self.words)-1)]
+    self.cursor.execute("SELECT word FROM words");
+    words = map(lambda r: r[0], self.cursor.fetchall())
+
+    return words[random.randint(0, len(words)-1)]
 
   def get_random_new_words(self):
     gs = google_sets()
@@ -27,11 +28,17 @@ class pudding_google_sets:
     )
 
   def store(self):
+    insert_counter = 0
+    insert_counter_max = 8
+
     d = enchant.Dict("de_DE")
     for newword in self.newwords:
       if d.check(newword.capitalize()):
         print newword
         self.cursor.execute("INSERT OR IGNORE INTO words (word) VALUES(?)", (newword,));
+        insert_counter += 1
+      if insert_counter >= insert_counter_max:
+        break
     self.connection.commit()
     
 if __name__ == "__main__":
