@@ -21,28 +21,25 @@ class pudding_google_sets:
 
   def get_random_new_words(self):
     gs = google_sets()
+    dict = enchant.Dict("de_DE")
 
     self.newwords += gs.get_new_words(
       self.get_random_word(),
-      self.get_random_word()
+      self.get_random_word(),
+      filter = lambda word: dict.check(word.capitalize())
     )
 
-  def store(self):
-    insert_counter = 0
-    insert_counter_max = 8
+  def store(self, maxcount = None):
+    if maxcount is None:
+      maxcount = len(self.newwords)
 
-    d = enchant.Dict("de_DE")
-    for newword in self.newwords:
-      if d.check(newword.capitalize()):
-        print newword
-        self.cursor.execute("INSERT OR IGNORE INTO words (word) VALUES(?)", (newword,));
-        insert_counter += 1
-      if insert_counter >= insert_counter_max:
-        break
+    for newword in self.newwords[0:maxcount]:
+      print newword
+      self.cursor.execute("INSERT OR IGNORE INTO words (word) VALUES(?)", (newword,));
     self.connection.commit()
     
 if __name__ == "__main__":
   g = pudding_google_sets("pudding_google_sets.sqlite")
   g.get_random_new_words(); 
   print g.newwords
-  g.store()
+  g.store(8)
