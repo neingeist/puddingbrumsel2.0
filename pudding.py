@@ -8,11 +8,8 @@ class puddingbrumsel:
   def __init__(self, pgs):
     self.pgs = pgs
 
-  def pick(self, list):
-    return list[random.randint(0, len(list)-1)]
-
   def pudding(self):
-    return self.pick([
+    return random.choice([
       "pudding",
       "pudding",
       self.neupudding()
@@ -22,34 +19,34 @@ class puddingbrumsel:
     return self.pgs.get_random_word() + "pudding"
 
   def brums(self):
-    return self.pick([
+    return random.choice([
       "*brumms*", 
       "*brums*"
     ])
 
   def emoticon(self):
-    return self.pick([
+    return random.choice([
       ":D",
       ":)",
       "^^"
     ])
 
   def doubleemoticon(self):
-    return self.pick([
+    return random.choice([
       ":D :D",
       ":))",
       "^^ ^^"
     ])
 
   def sademoticon(self):
-    return self.pick([
+    return random.choice([
       ":((",
       ":-(",
       ":/"
     ])
 
   def adj(self):
-    return self.pick([
+    return random.choice([
       u"köstlicher",
       "knuspriger", 
       "knackiger",
@@ -58,7 +55,7 @@ class puddingbrumsel:
     ])
 
   def tweet(self):
-    return self.pick([
+    return random.choice([
       "<3 " + self.pudding() + " " + self.emoticon(),
       self.pudding() + " " + self.doubleemoticon(),
       self.pudding() + " " + self.brums(), 

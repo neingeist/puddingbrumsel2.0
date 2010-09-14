@@ -17,7 +17,7 @@ class pudding_google_sets:
     self.cursor.execute("SELECT word FROM words");
     words = map(lambda r: r[0], self.cursor.fetchall())
 
-    return words[random.randint(0, len(words)-1)]
+    return random.choice(words)
 
   def get_random_new_words(self):
     gs = google_sets()

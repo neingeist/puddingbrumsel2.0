@@ -11,7 +11,7 @@ gs = google_sets()
 d = enchant.Dict("de_DE")
 
 def get_random_word():
-  return wordset[random.randint(0,len(wordset)-1)]
+  return random.choice(wordset)
 
 def get_new_words(w1, w2):
   return gs.get_new_words(w1, w2, lambda w: d.check(w.capitalize()))
