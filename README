@@ -1,7 +1,12 @@
 Eine kleine, äußerst einseitig denkende künstliche Intelligenz. 
 
+Ausprobieren:
+  $ python pudding.py
+  hihi. zwiebelnpudding *brumms* :)
+
 Credits:
   Die Katze mit Hut.
+  Google Sets - http://labs.google.com/sets
 
 Beispiel für ~/.puddingbrumselrc:
 

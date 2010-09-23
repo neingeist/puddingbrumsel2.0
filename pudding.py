@@ -48,9 +48,9 @@ class puddingbrumsel:
   def adj(self):
     return random.choice([
       u"köstlicher",
-      "knuspriger", 
-      "knackiger",
-      "lecker",
+      u"knuspriger", 
+      u"knackiger",
+      u"lecker",
       u"süßer",
     ])
 
