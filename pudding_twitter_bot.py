@@ -22,6 +22,7 @@ if __name__ == "__main__":
     password=cp.get("twitter", "password"),
     access_token_key=cp.get("twitter", "access_token_key"),
     access_token_secret=cp.get("twitter", "access_token_secret"),
+    input_encoding="utf-8"
     )
   
   sqlite_file = "pudding_google_sets.sqlite"
@@ -29,7 +30,7 @@ if __name__ == "__main__":
   p = puddingbrumsel(pgs)
 
   while True:
-    tweet = p.tweet()
+    tweet = p.tweet().encode("utf-8")
     status = api.PostUpdate(tweet)
     print status.text
     
