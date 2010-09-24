@@ -11,7 +11,6 @@ class puddingbrumsel:
   def pudding(self):
     return random.choice([
       "pudding",
-      "pudding",
       self.neupudding()
     ])
 
